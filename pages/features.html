@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Features | Manufacturing Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f1f5f9;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, #020617, #0f172a);
+    }
+
+    .nav-link {
+      color: #e5e7eb !important;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #38bdf8 !important;
+    }
+
+    /* HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #020617, #1e293b);
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-weight: 700;
+      color: #020617;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: #0d6efd;
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 10px;
+    }
+
+    /* CARD */
+    .feature-card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #020617;
+      color: #cbd5f5;
+      padding: 20px;
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="../index.html">MMS</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" title="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="overview.html">Overview</a></li>
+        <li class="nav-item"><a class="nav-link active" href="features.html">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="modules.html">Modules</a></li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-info ms-3 px-3" href="contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <h1>System Features</h1>
+  <p>Powerful tools to manage your manufacturing operations</p>
+</div>
+
+<!-- OVERVIEW -->
+<section class="container my-5">
+  <div class="card p-5 border-0 shadow">
+    <p class="fs-5 text-center">
+      Our Manufacturing Management System is a comprehensive solution designed
+      to help businesses optimize production workflows and improve operational
+      efficiency. It provides a centralized hub to manage everything from raw
+      material procurement to finished goods delivery.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="container my-5">
+  <h2 class="section-title text-center mb-5">Key Features</h2>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card feature-card p-4">
+        <h5>Production Planning</h5>
+        <p>
+          Plan and schedule production runs, manage work orders,
+          and track job progress in real-time to improve efficiency.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card feature-card p-4">
+        <h5>Inventory & Warehouse Management</h5>
+        <p>
+          Maintain accurate records of raw materials,
+          work-in-progress, and finished goods inventory.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card feature-card p-4">
+        <h5>Quality Control</h5>
+        <p>
+          Implement quality checks and inspections at every
+          stage of the manufacturing process.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card feature-card p-4">
+        <h5>Bill of Materials (BOM) Management</h5>
+        <p>
+          Create and manage accurate Bills of Materials to
+          ensure precise material usage and cost tracking.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card feature-card p-4">
+        <h5>Supply Chain Integration</h5>
+        <p>
+          Manage suppliers, purchase orders, and inbound/outbound
+          logistics from a single unified platform.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card feature-card p-4">
+        <h5>Reporting & Analytics</h5>
+        <p>
+          Gain real-time insights into production efficiency,
+          costs, and inventory levels with powerful reports.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Manufacturing Management System · Designed for Academic Use
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
