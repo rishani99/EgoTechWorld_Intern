@@ -1,0 +1,24 @@
+.report-container {
+  padding: 30px;
+}
+
+.report-container button {
+  background: #6f42c1;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.report-container button:hover {
+  background: #5936a2;
+}
+
+#reportOutput {
+  margin-top: 20px;
+  background: #f1f3f5;
+  padding: 15px;
+  border-radius: 6px;
+  white-space: pre-line;
+}
