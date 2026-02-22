@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./order.css";
 
 const Orders = () => {
@@ -7,33 +8,41 @@ const Orders = () => {
   const [quantity, setQuantity] = useState("");
   const [orders, setOrders] = useState([]);
 
-  const addOrder = () => {
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    const res = await axios.get("http://localhost:5000/api/orders");
+    setOrders(res.data);
+  };
+
+  const addOrder = async () => {
     if (!customer || !product || !quantity) return;
 
-    const newOrder = {
-      id: Date.now(),
+    await axios.post("http://localhost:5000/api/orders", {
       customer,
       product,
-      quantity: parseInt(quantity),
-      status: "Pending",
-    };
+      quantity,
+    });
 
-    setOrders([...orders, newOrder]);
+    fetchOrders();
     setCustomer("");
     setProduct("");
     setQuantity("");
   };
 
-  const deleteOrder = (id) => {
-    setOrders(orders.filter((o) => o.id !== id));
+  const deleteOrder = async (id) => {
+    await axios.delete(`http://localhost:5000/api/orders/${id}`);
+    fetchOrders();
   };
 
-  const markCompleted = (id) => {
-    setOrders(
-      orders.map((o) =>
-        o.id === id ? { ...o, status: "Completed" } : o
-      )
-    );
+  const toggleStatus = async (order) => {
+    await axios.put(`http://localhost:5000/api/orders/${order._id}`, {
+      status: order.status === "Pending" ? "Completed" : "Pending"
+    });
+
+    fetchOrders();
   };
 
   return (
@@ -47,18 +56,21 @@ const Orders = () => {
           value={customer}
           onChange={(e) => setCustomer(e.target.value)}
         />
+
         <input
           type="text"
-          placeholder="Product"
+          placeholder="Product Name"
           value={product}
           onChange={(e) => setProduct(e.target.value)}
         />
+
         <input
           type="number"
           placeholder="Quantity"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
+
         <button onClick={addOrder}>Add Order</button>
       </div>
 
@@ -67,40 +79,24 @@ const Orders = () => {
           <tr>
             <th>Customer</th>
             <th>Product</th>
-            <th>Qty</th>
+            <th>Quantity</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
           {orders.map((order) => (
-            <tr key={order.id}>
+            <tr key={order._id}>
               <td>{order.customer}</td>
               <td>{order.product}</td>
               <td>{order.quantity}</td>
-              <td
-                className={
-                  order.status === "Completed"
-                    ? "status-complete"
-                    : "status-pending"
-                }
-              >
-                {order.status}
-              </td>
+              <td>{order.status}</td>
               <td>
-                {order.status !== "Completed" && (
-                  <button
-                    className="complete-btn"
-                    onClick={() => markCompleted(order.id)}
-                  >
-                    Complete
-                  </button>
-                )}
-                <button
-                  className="delete-btn"
-                  onClick={() => deleteOrder(order.id)}
-                >
+                <button onClick={() => toggleStatus(order)}>
+                  Toggle
+                </button>
+                <button onClick={() => deleteOrder(order._id)}>
                   Delete
                 </button>
               </td>

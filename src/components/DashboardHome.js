@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "./dashboardhome.css";
 
 const DashboardHome = () => {
+
+  const [dateTime, setDateTime] = useState(new Date());
+
+  // Live clock update
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const recentJobs = [
     { job: "Order #101", machine: "Machine A", date: "2026-02-16", status: "Completed" },
     { job: "Order #102", machine: "Machine B", date: "2026-02-16", status: "Pending" },
@@ -9,23 +22,48 @@ const DashboardHome = () => {
   ];
 
   return (
-    <div>
+    <div className="dashboard-home">
+
+      {/* Header */}
       <div className="header">
-        <h1>Dashboard</h1>
-        <span>{new Date().toLocaleString()}</span>
+        <div>
+          <h1>Manufacturing Dashboard</h1>
+          <p className="subtitle">Welcome back 👋</p>
+        </div>
+
+        <div className="datetime-box">
+          <span>{dateTime.toLocaleDateString()}</span>
+          <strong>{dateTime.toLocaleTimeString()}</strong>
+        </div>
       </div>
 
       {/* Info Cards */}
       <div className="info-cards">
-        <div className="card card-blue"><h3>Total Orders</h3><p>120</p></div>
-        <div className="card card-teal"><h3>Work in Progress</h3><p>35</p></div>
-        <div className="card card-green"><h3>Finished Goods</h3><p>50</p></div>
-        <div className="card card-yellow"><h3>Pending Issues</h3><p>8</p></div>
+        <div className="card gradient-blue">
+          <h3>Total Orders</h3>
+          <p>120</p>
+        </div>
+
+        <div className="card gradient-purple">
+          <h3>Work in Progress</h3>
+          <p>35</p>
+        </div>
+
+        <div className="card gradient-green">
+          <h3>Finished Goods</h3>
+          <p>50</p>
+        </div>
+
+        <div className="card gradient-orange">
+          <h3>Pending Issues</h3>
+          <p>8</p>
+        </div>
       </div>
 
-      {/* Recent Jobs Table */}
+      {/* Table */}
       <div className="jobs-table">
         <h2>Recent Production Jobs</h2>
+
         <table>
           <thead>
             <tr>
@@ -35,22 +73,30 @@ const DashboardHome = () => {
               <th>Status</th>
             </tr>
           </thead>
+
           <tbody>
             {recentJobs.map((job, idx) => (
               <tr key={idx}>
                 <td>{job.job}</td>
                 <td>{job.machine}</td>
                 <td>{job.date}</td>
-                <td className={`status ${
-                    job.status === "Completed" ? "status-completed" :
-                    job.status === "Pending" ? "status-pending" :
-                    job.status === "In Progress" ? "status-progress" : "status-cancelled"
-                  }`}>{job.status}</td>
+                <td>
+                  <span className={`status-badge ${
+                    job.status === "Completed" ? "completed" :
+                    job.status === "Pending" ? "pending" :
+                    job.status === "In Progress" ? "progress" :
+                    "cancelled"
+                  }`}>
+                    {job.status}
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
+
     </div>
   );
 };
