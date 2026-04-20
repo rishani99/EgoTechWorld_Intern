@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import DashboardHome from "./DashboardHome";
 import Inventory from "./Inventory";
 import Production from "./Production";
@@ -7,15 +7,15 @@ import Orders from "./Orders";
 import Reports from "./Reports";
 import "./Dashboard.css";
 
-const Dashboard = () => {
-  const menuItems = [
-    { name: "Dashboard", path: "/" },
-    { name: "Inventory", path: "/inventory" },
-    { name: "Production", path: "/production" },
-    { name: "Orders", path: "/orders" },
-    { name: "Reports", path: "/reports" },
-  ];
+const menuItems = [
+  { name: "Dashboard", path: "/" },
+  { name: "Inventory", path: "/inventory" },
+  { name: "Production", path: "/production" },
+  { name: "Orders", path: "/orders" },
+  { name: "Reports", path: "/reports" },
+];
 
+const Dashboard = () => {
   return (
     <Router>
       <div className="dashboard-container">
@@ -25,7 +25,12 @@ const Dashboard = () => {
           <ul className="menu-list">
             {menuItems.map((item) => (
               <li key={item.name} className="menu-item">
-                <Link to={item.path}>{item.name}</Link>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                  {item.name}
+                </NavLink>
               </li>
             ))}
           </ul>

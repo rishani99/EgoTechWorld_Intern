@@ -1,9 +1,10 @@
 /* ===== Main Layout ===== */
 .dashboard-home {
-  padding: 2rem;
-  background: linear-gradient(to right, #f8fafc, #eef2f7);
+  padding: 2.5rem;
+  background: linear-gradient(to right, #f8fafc, #e2e8f0);
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
+  transition: background 0.3s ease-in-out;
 }
 
 /* ===== Header Section ===== */
@@ -11,108 +12,115 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .header h1 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
+  letter-spacing: 0.5px;
 }
 
 .subtitle {
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-top: 5px;
+  letter-spacing: 0.3px;
 }
 
 /* ===== Date Time Box ===== */
 .datetime-box {
-  background: white;
-  padding: 12px 18px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   text-align: right;
-  transition: 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: default;
 }
 
 .datetime-box:hover {
-  transform: scale(1.03);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
 .datetime-box span {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #64748b;
 }
 
 .datetime-box strong {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #0f172a;
 }
 
 /* ===== Info Cards ===== */
 .info-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 3rem;
 }
 
 .card {
-  padding: 1.5rem;
-  border-radius: 18px;
+  padding: 1.8rem;
+  border-radius: 20px;
   color: white;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-  transition: 0.3s ease-in-out;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
 }
 
 .card h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .card p {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 /* Gradient Variations */
 .gradient-blue {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(145deg, #3b82f6, #2563eb);
 }
 
 .gradient-purple {
-  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  background: linear-gradient(145deg, #8b5cf6, #6d28d9);
 }
 
 .gradient-green {
-  background: linear-gradient(135deg, #22c55e, #15803d);
+  background: linear-gradient(145deg, #22c55e, #15803d);
 }
 
 .gradient-orange {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: linear-gradient(145deg, #f59e0b, #d97706);
 }
 
 /* ===== Table Section ===== */
 .jobs-table {
-  background: white;
-  padding: 1.8rem;
-  border-radius: 18px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s ease;
 }
 
 .jobs-table h2 {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   font-weight: 600;
   color: #1e293b;
 }
@@ -124,7 +132,7 @@
 
 .jobs-table th,
 .jobs-table td {
-  padding: 14px;
+  padding: 16px;
   text-align: left;
   font-size: 0.95rem;
 }
@@ -137,21 +145,27 @@
 
 .jobs-table tr {
   border-top: 1px solid #e2e8f0;
-  transition: 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .jobs-table tr:hover {
   background-color: #f9fafb;
+  transform: translateX(3px);
 }
 
 /* ===== Status Badges ===== */
 .status-badge {
-  padding: 6px 14px;
-  border-radius: 25px;
+  padding: 6px 16px;
+  border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 600;
   color: white;
   display: inline-block;
+  transition: transform 0.2s;
+}
+
+.status-badge:hover {
+  transform: scale(1.05);
 }
 
 .completed {
@@ -172,7 +186,6 @@
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
-
   .header {
     flex-direction: column;
     align-items: flex-start;

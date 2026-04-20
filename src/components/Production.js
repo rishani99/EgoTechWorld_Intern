@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Production.css";
 
 const Production = () => {
@@ -7,11 +7,37 @@ const Production = () => {
   const [date, setDate] = useState("");
   const [productionList, setProductionList] = useState([]);
 
+  // Sample data load
+  useEffect(() => {
+    const sampleData = [
+      {
+        _id: "1",
+        productName: "Wood Table",
+        quantity: 15,
+        date: "2026-03-01",
+      },
+      {
+        _id: "2",
+        productName: "Office Chair",
+        quantity: 30,
+        date: "2026-03-02",
+      },
+      {
+        _id: "3",
+        productName: "Steel Cabinet",
+        quantity: 10,
+        date: "2026-03-03",
+      },
+    ];
+
+    setProductionList(sampleData);
+  }, []);
+
   const addProduction = () => {
-    if (productName === "" || quantity === "" || date === "") return;
+    if (!productName || !quantity || !date) return;
 
     const newRecord = {
-      id: Date.now(),
+      _id: Date.now().toString(),
       productName,
       quantity: parseInt(quantity),
       date,
@@ -25,8 +51,9 @@ const Production = () => {
   };
 
   const deleteRecord = (id) => {
-    const updatedList = productionList.filter((item) => item.id !== id);
-    setProductionList(updatedList);
+    setProductionList(
+      productionList.filter((item) => item._id !== id)
+    );
   };
 
   return (
@@ -69,14 +96,14 @@ const Production = () => {
 
         <tbody>
           {productionList.map((item) => (
-            <tr key={item.id}>
+            <tr key={item._id}>
               <td>{item.productName}</td>
               <td>{item.quantity}</td>
               <td>{item.date}</td>
               <td>
                 <button
                   className="delete-btn"
-                  onClick={() => deleteRecord(item.id)}
+                  onClick={() => deleteRecord(item._id)}
                 >
                   Delete
                 </button>

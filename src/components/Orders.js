@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./order.css";
 
 const Orders = () => {
@@ -8,41 +7,68 @@ const Orders = () => {
   const [quantity, setQuantity] = useState("");
   const [orders, setOrders] = useState([]);
 
+  // Sample data load
   useEffect(() => {
-    fetchOrders();
+    const sampleOrders = [
+      {
+        _id: "1",
+        customer: "Nimal",
+        product: "Wood Table",
+        quantity: 2,
+        status: "Pending",
+      },
+      {
+        _id: "2",
+        customer: "Kasun",
+        product: "Office Chair",
+        quantity: 5,
+        status: "Completed",
+      },
+      {
+        _id: "3",
+        customer: "Saman",
+        product: "Steel Cabinet",
+        quantity: 1,
+        status: "Pending",
+      },
+    ];
+
+    setOrders(sampleOrders);
   }, []);
 
-  const fetchOrders = async () => {
-    const res = await axios.get("http://localhost:5000/api/orders");
-    setOrders(res.data);
-  };
-
-  const addOrder = async () => {
+  const addOrder = () => {
     if (!customer || !product || !quantity) return;
 
-    await axios.post("http://localhost:5000/api/orders", {
+    const newOrder = {
+      _id: Date.now().toString(),
       customer,
       product,
-      quantity,
-    });
+      quantity: parseInt(quantity),
+      status: "Pending",
+    };
 
-    fetchOrders();
+    setOrders([...orders, newOrder]);
+
     setCustomer("");
     setProduct("");
     setQuantity("");
   };
 
-  const deleteOrder = async (id) => {
-    await axios.delete(`http://localhost:5000/api/orders/${id}`);
-    fetchOrders();
+  const deleteOrder = (id) => {
+    setOrders(orders.filter((order) => order._id !== id));
   };
 
-  const toggleStatus = async (order) => {
-    await axios.put(`http://localhost:5000/api/orders/${order._id}`, {
-      status: order.status === "Pending" ? "Completed" : "Pending"
-    });
+  const toggleStatus = (order) => {
+    const updatedOrders = orders.map((o) =>
+      o._id === order._id
+        ? {
+            ...o,
+            status: o.status === "Pending" ? "Completed" : "Pending",
+          }
+        : o
+    );
 
-    fetchOrders();
+    setOrders(updatedOrders);
   };
 
   return (

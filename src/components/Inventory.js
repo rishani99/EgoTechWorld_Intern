@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Inventory.css";
 
 const Inventory = () => {
@@ -6,12 +6,26 @@ const Inventory = () => {
   const [itemQty, setItemQty] = useState("");
   const [inventory, setInventory] = useState([]);
 
+  useEffect(() => {
+    const sampleData = [
+      { _id: "1", itemName: "Pen", quantity: 25 },
+      { _id: "2", itemName: "Pencil", quantity: 100 },
+      { _id: "3", itemName: "Eraser", quantity: 40 },
+      { _id: "4", itemName: "Ruler", quantity: 10 },
+      { _id: "5", itemName: "Notebook", quantity: 60 },
+      { _id: "6", itemName: "Marker", quantity: 15 },
+      { _id: "7", itemName: "Stapler", quantity: 5 },
+    ];
+
+    setInventory(sampleData);
+  }, []);
+
   const addItem = () => {
-    if (itemName === "" || itemQty === "") return;
+    if (itemName.trim() === "" || itemQty === "") return;
 
     const newItem = {
-      id: Date.now(),
-      name: itemName,
+      _id: Date.now().toString(),
+      itemName,
       quantity: parseInt(itemQty),
     };
 
@@ -21,8 +35,7 @@ const Inventory = () => {
   };
 
   const deleteItem = (id) => {
-    const updatedList = inventory.filter((item) => item.id !== id);
-    setInventory(updatedList);
+    setInventory(inventory.filter((item) => item._id !== id));
   };
 
   return (
@@ -36,43 +49,44 @@ const Inventory = () => {
           value={itemName}
           onChange={(e) => setItemName(e.target.value)}
         />
-
         <input
           type="number"
           placeholder="Quantity"
           value={itemQty}
           onChange={(e) => setItemQty(e.target.value)}
         />
-
-        <button onClick={addItem}>Add Item</button>
+        <button className="add-btn" onClick={addItem}>
+          Add Item
+        </button>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {inventory.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.quantity}</td>
-              <td>
-                <button
-                  className="delete-btn"
-                  onClick={() => deleteItem(item.id)}
-                >
-                  Delete
-                </button>
-              </td>
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Quantity</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {inventory.map((item) => (
+              <tr key={item._id}>
+                <td>{item.itemName}</td>
+                <td>{item.quantity}</td>
+                <td>
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteItem(item._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
