@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Project with Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .step-box {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .software-card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .software-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .software-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .software-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            margin-top: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Full Stack Project with Database</h1>
+            <p>Complete Guide to Building Modern Web Applications</p>
+        </header>
+
+        <div class="content">
+            <!-- Introduction Section -->
+            <section>
+                <h2>What is Full Stack Development?</h2>
+                <p>Full stack development involves building both the frontend (client-side) and backend (server-side) of a web application, along with the database. A full stack developer works with:</p>
+                <ul>
+                    <li><strong>Frontend:</strong> User interface and client-side logic (HTML, CSS, JavaScript)</li>
+                    <li><strong>Backend:</strong> Server-side logic and API (Node.js, Python, Java, etc.)</li>
+                    <li><strong>Database:</strong> Data storage and retrieval (MySQL, MongoDB, PostgreSQL)</li>
+                </ul>
+            </section>
+
+            <!-- How to Use Database Section -->
+            <section>
+                <h2>How to Use Database in Full Stack Projects</h2>
+                
+                <div class="step-box">
+                    <h3>Step 1: Design Your Database Schema</h3>
+                    <p>Plan your database structure by defining tables, columns, data types, and relationships before implementation.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3>Step 2: Choose a Database Management System</h3>
+                    <p>Select between relational (SQL) or non-relational (NoSQL) databases based on your project requirements.</p>
+                </div>
+
+                <div class="step-box">
+                    <h3>Step 3: Set Up Database Connection</h3>
+                    <p>Establish a connection between your backend application and database using connection strings and drivers.</p>
+                    <div class="code-block">
+// Example: Node.js with MySQL
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'mydb'
+});
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h3>Step 4: Create CRUD Operations</h3>
+                    <p>Implement Create, Read, Update, and Delete operations to interact with your database.</p>
+                    <ul>
+                        <li><strong>CREATE:</strong> Insert new data into the database</li>
+                        <li><strong>READ:</strong> Retrieve data from the database</li>
+                        <li><strong>UPDATE:</strong> Modify existing data</li>
+                        <li><strong>DELETE:</strong> Remove data from the database</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h3>Step 5: Build API Endpoints</h3>
+                    <p>Create RESTful API endpoints that connect your frontend to database operations.</p>
+                    <div class="code-block">
+// Example: Express.js endpoint
+app.get('/users/:id', (req, res) => {
+  const query = 'SELECT * FROM users WHERE id = ?';
+  connection.query(query, [req.params.id], (error, results) => {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <h3>Step 6: Implement Security</h3>
+                    <p>Use prepared statements, authentication, and validation to protect your database from attacks.</p>
+                    <ul>
+                        <li>Use parameterized queries to prevent SQL injection</li>
+                        <li>Implement user authentication and authorization</li>
+                        <li>Encrypt sensitive data</li>
+                        <li>Validate all user inputs</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h3>Step 7: Test and Deploy</h3>
+                    <p>Test all database operations thoroughly before deploying your application to production.</p>
+                </div>
+            </section>
+
+            <!-- Database Software Section -->
+            <section>
+                <h2>Popular Database Software for Full Stack Projects</h2>
+                
+                <h3>Relational Databases (SQL)</h3>
+                <div class="software-grid">
+                    <div class="software-card">
+                        <h4>MySQL</h4>
+                        <p>Open-source relational database, widely used in web applications. Known for reliability and ease of use.</p>
+                        <span class="badge">Open Source</span>
+                        <span class="badge">Free</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>PostgreSQL</h4>
+                        <p>Advanced open-source relational database with powerful features and excellent performance.</p>
+                        <span class="badge">Open Source</span>
+                        <span class="badge">Free</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Microsoft SQL Server</h4>
+                        <p>Enterprise-level relational database with advanced features and strong security capabilities.</p>
+                        <span class="badge">Enterprise</span>
+                        <span class="badge">Paid</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Oracle Database</h4>
+                        <p>Powerful enterprise database system for large-scale applications and complex data management.</p>
+                        <span class="badge">Enterprise</span>
+                        <span class="badge">Paid</span>
+                    </div>
+                </div>
+
+                <h3>NoSQL Databases</h3>
+                <div class="software-grid">
+                    <div class="software-card">
+                        <h4>MongoDB</h4>
+                        <p>Document-based NoSQL database, perfect for flexible schema designs and JSON-like data structures.</p>
+                        <span class="badge">Open Source</span>
+                        <span class="badge">Free</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Firebase Realtime Database</h4>
+                        <p>Cloud-hosted NoSQL database by Google, ideal for real-time applications and mobile apps.</p>
+                        <span class="badge">Cloud-Based</span>
+                        <span class="badge">Freemium</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Cassandra</h4>
+                        <p>Distributed NoSQL database designed for high scalability and availability across multiple servers.</p>
+                        <span class="badge">Open Source</span>
+                        <span class="badge">Free</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Redis</h4>
+                        <p>In-memory data store used for caching, sessions, and real-time data processing.</p>
+                        <span class="badge">Open Source</span>
+                        <span class="badge">Free</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools for Database Management -->
+            <section>
+                <h2>Popular Database Management Tools</h2>
+                <div class="software-grid">
+                    <div class="software-card">
+                        <h4>phpMyAdmin</h4>
+                        <p>Web-based tool for managing MySQL and MariaDB databases with an intuitive interface.</p>
+                        <span class="badge">Web-based</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>MySQL Workbench</h4>
+                        <p>Official MySQL GUI tool for database design, development, and administration.</p>
+                        <span class="badge">Desktop</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>DBeaver</h4>
+                        <p>Universal database tool supporting multiple database systems with powerful features.</p>
+                        <span class="badge">Desktop</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>MongoDB Compass</h4>
+                        <p>Official MongoDB GUI for querying, analyzing, and visualizing data in MongoDB databases.</p>
+                        <span class="badge">Desktop</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>pgAdmin</h4>
+                        <p>Web-based administration and development platform for PostgreSQL databases.</p>
+                        <span class="badge">Web-based</span>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Adminer</h4>
+                        <p>Single PHP file tool for managing multiple database systems online.</p>
+                        <span class="badge">Web-based</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Best Practices Section -->
+            <section>
+                <h2>Best Practices for Database Usage</h2>
+                <ul>
+                    <li><strong>Normalize your data:</strong> Reduce redundancy and improve data integrity</li>
+                    <li><strong>Use indexing:</strong> Improve query performance by creating appropriate indexes</li>
+                    <li><strong>Implement backups:</strong> Regular database backups to prevent data loss</li>
+                    <li><strong>Monitor performance:</strong> Track database queries and optimize slow ones</li>
+                    <li><strong>Use transactions:</strong> Ensure data consistency with ACID properties</li>
+                    <li><strong>Document schema:</strong> Keep clear documentation of your database structure</li>
+                    <li><strong>Version control:</strong> Track database changes like you do with code</li>
+                    <li><strong>Follow security guidelines:</strong> Use strong passwords and encryption</li>
+                </ul>
+            </section>
+
+            <!-- Popular Stacks Section -->
+            <section>
+                <h2>Popular Full Stack Combinations</h2>
+                <div class="software-grid">
+                    <div class="software-card">
+                        <h4>MEAN Stack</h4>
+                        <p><strong>MongoDB, Express, Angular, Node.js</strong> - JavaScript-based full stack for building scalable applications.</p>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>MERN Stack</h4>
+                        <p><strong>MongoDB, Express, React, Node.js</strong> - Modern JavaScript stack with React for dynamic UIs.</p>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>LAMP Stack</h4>
+                        <p><strong>Linux, Apache, MySQL, PHP</strong> - Traditional stack, still widely used for web development.</p>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>JAM Stack</h4>
+                        <p><strong>JavaScript, APIs, Markup</strong> - Modern approach for fast and secure static websites.</p>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Python Django Stack</h4>
+                        <p><strong>Python, Django, PostgreSQL</strong> - Powerful stack for rapid development and scalability.</p>
+                    </div>
+
+                    <div class="software-card">
+                        <h4>Ruby on Rails Stack</h4>
+                        <p><strong>Ruby, Rails, PostgreSQL</strong> - Convention-over-configuration framework for quick development.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Full Stack Development Guide. All rights reserved.</p>
+            <p>Learn, Build, and Master Full Stack Development with Databases</p>
+        </footer>
+    </div>
+</body>
+</html>

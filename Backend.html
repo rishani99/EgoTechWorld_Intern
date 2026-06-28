@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Full-Stack Course — Backend Guide</title>
+	<style>
+		body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:24px;line-height:1.5;color:#111}
+		header{margin-bottom:18px}
+		h1{font-size:24px;margin:0 0 6px}
+		h2{font-size:18px;margin:18px 0 6px}
+		ul{margin:8px 0 8px 20px}
+		code{background:#f3f3f3;padding:2px 6px;border-radius:4px}
+		.note{background:#eef9ff;padding:10px;border-left:4px solid #3aa0ff}
+		.small-note{font-size:12px;color:#555}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Backend: Full-Stack Course — What, How, and Tools</h1>
+		<p class="note">Short, practical guide for students: what backend is, how to use it, recommended software, and reasons to pick each tool.</p>
+	</header>
+
+	<section>
+		<h2>What is Backend?</h2>
+		<p>The backend is the server-side of a web application: it handles business logic, data storage, authentication, APIs, and integrates with other services. It exposes APIs that the frontend consumes.</p>
+	</section>
+
+	<section>
+		<h2>How to use the Backend (basic workflow)</h2>
+		<ol>
+			<li>Design your data model and API endpoints (use REST or GraphQL).</li>
+			<li>Implement routes/controllers that process requests and return JSON.</li>
+			<li>Connect to a database to persist data (queries, ORMs).</li>
+			<li>Add authentication & authorization (sessions, JWT, OAuth).</li>
+			<li>Write tests for endpoints and business logic.</li>
+			<li>Deploy to a server or platform and monitor (logs, metrics).</li>
+		</ol>
+	</section>
+
+	<section>
+		<h2>Essential Software & Why to Use Them</h2>
+		<h3>Languages & Runtimes</h3>
+		<ul>
+			<li><strong>Node.js (JavaScript/TypeScript)</strong> — popular, single language across stack, large ecosystem (Express, NestJS). Good for real-time apps.</li>
+			<li><strong>Python</strong> — readable, strong ecosystem for web (Django, Flask, FastAPI). Excellent for data tasks.</li>
+			<li><strong>Java / Kotlin</strong> — enterprise-grade, strong typed, great for large systems (Spring).</li>
+			<li><strong>Go</strong> — fast, simple concurrency, suitable for microservices and performance-critical services.</li>
+		</ul>
+
+		<h3>Web Frameworks</h3>
+		<ul>
+			<li><code>Express</code> (Node) — minimal and flexible.</li>
+			<li><code>FastAPI</code> (Python) — modern, fast, good for async and auto docs.</li>
+			<li><code>Django</code> (Python) — batteries-included, ORM, admin UI.</li>
+			<li><code>Spring Boot</code> (Java) — production-ready features and ecosystem.</li>
+		</ul>
+
+		<h3>Databases</h3>
+		<ul>
+			<li><strong>PostgreSQL</strong> — relational, reliable, advanced features.</li>
+			<li><strong>MySQL / MariaDB</strong> — popular relational DB.</li>
+			<li><strong>MongoDB</strong> — document DB for flexible schemas.</li>
+			<li><strong>Redis</strong> — in-memory store for caching, sessions, pub/sub.</li>
+		</ul>
+
+		<h3>Developer Tools</h3>
+		<ul>
+			<li><strong>Git</strong> — version control.</li>
+			<li><strong>Docker</strong> — containerize apps for consistent environments and deployments.</li>
+			<li><strong>Postman / HTTPie</strong> — test APIs.</li>
+			<li><strong>VS Code</strong> — editor with extensions for debugging and linting.</li>
+		</ul>
+
+		<h3>Deployment & Hosting</h3>
+		<ul>
+			<li><strong>Heroku / Render / Vercel (serverless)</strong> — easy app hosting for smaller projects.</li>
+			<li><strong>AWS / Azure / GCP</strong> — scalable cloud infrastructure and managed services.</li>
+			<li><strong>Kubernetes</strong> — orchestration for microservices at scale.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Recommended Learning Path</h2>
+		<ul>
+			<li>Basics: HTTP, REST, JSON, CRUD operations.</li>
+			<li>Pick one language + framework (e.g., Node + Express or Python + FastAPI).</li>
+			<li>Learn SQL and one relational DB (Postgres).</li>
+			<li>Auth: sessions, cookies, JWT, OAuth flows.</li>
+			<li>Testing, logging, and error handling.</li>
+			<li>CI/CD basics and simple deployment (Docker + a cloud provider).</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Quick Starter Commands (example: Node + Express + Postgres)</h2>
+		<pre><code>mkdir backend && cd backend
+npm init -y
+npm install express pg dotenv
+# run locally: node index.js
+# containerize: docker build -t my-backend .
+		</code></pre>
+	</section>
+
+	<footer>
+		<p class="footer-note">Keep projects small and focused. Build incremental features and add tests early.</p>
+	</footer>
+</body>
+</html>
