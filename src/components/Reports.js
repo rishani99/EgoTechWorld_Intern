@@ -1,53 +1,349 @@
 import React, { useState } from "react";
-import "./Report.css";
+import "./Reports.css";
+
+import {
+  FileText,
+  Factory,
+  Boxes,
+  Users,
+  Cpu,
+  Download
+} from "lucide-react";
+
 
 const Reports = () => {
-  
-  const [reportData, setReportData] = useState({
-    totalInventory: 20,
-    ordersToday: 5,
-    productionStatus: "Pending",
-  });
 
-  const generateReport = () => {
-   
-    const data = {
-      totalInventory: Math.floor(Math.random() * 50) + 1,
-      ordersToday: Math.floor(Math.random() * 20) + 1,
-      productionStatus: ["Running Smoothly", "Pending", "Delayed"][Math.floor(Math.random() * 3)],
-    };
-    setReportData(data);
-  };
 
-  return (
-    <div className="reports-container">
-      <h2>Reports Dashboard</h2>
-      <p>Click the button below to generate a quick report:</p>
+const [reports] = useState([
 
-      <button className="generate-btn" onClick={generateReport}>
-        Generate Report
-      </button>
+{
+id:1,
+name:"Monthly Production Report",
+type:"Production",
+date:"2026-02-15",
+status:"Completed"
+},
 
-      {reportData && (
-        <div className="report-cards">
-          <div className="card">
-            <h3><b>Total Inventory</b></h3>
-            <p>{reportData.totalInventory}</p>
-          </div>
+{
+id:2,
+name:"Inventory Stock Report",
+type:"Inventory",
+date:"2026-02-20",
+status:"Completed"
+},
 
-          <div className="card">
-            <h3><b>Orders Today</b></h3>
-            <p>{reportData.ordersToday}</p>
-          </div>
+{
+id:3,
+name:"Employee Attendance Report",
+type:"Employee",
+date:"2026-02-25",
+status:"Available"
+},
 
-          <div className="card">
-            <h3><b>Production Status</b></h3>
-            <p>{reportData.productionStatus}</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+{
+id:4,
+name:"Machine Performance Report",
+type:"Machine",
+date:"2026-03-01",
+status:"Available"
+}
+
+]);
+
+
+
+const [search,setSearch]=useState("");
+
+
+
+
+const filteredReports = reports.filter(
+
+(report)=>
+
+report.name
+.toLowerCase()
+.includes(search.toLowerCase())
+
+);
+
+
+
+
+
+const downloadReport=(name)=>{
+
+alert(name+" Download Started");
+
 };
+
+
+
+
+
+
+return(
+
+
+<div className="reports-container">
+
+
+<h2>
+Reports Management
+</h2>
+
+
+
+
+
+
+{/* Summary Cards */}
+
+
+<div className="report-cards">
+
+
+<div className="report-card">
+
+<Factory/>
+
+<h3>
+25
+</h3>
+
+<p>
+Production Reports
+</p>
+
+</div>
+
+
+
+
+<div className="report-card">
+
+<Boxes/>
+
+<h3>
+18
+</h3>
+
+<p>
+Inventory Reports
+</p>
+
+</div>
+
+
+
+
+
+<div className="report-card">
+
+<Users/>
+
+<h3>
+12
+</h3>
+
+<p>
+Employee Reports
+</p>
+
+</div>
+
+
+
+
+
+<div className="report-card">
+
+<Cpu/>
+
+<h3>
+8
+</h3>
+
+<p>
+Machine Reports
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div className="search-area">
+
+
+<input
+
+placeholder="Search Report..."
+
+value={search}
+
+onChange={(e)=>setSearch(e.target.value)}
+
+/>
+
+
+</div>
+
+
+
+
+
+
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+Report Name
+</th>
+
+<th>
+Type
+</th>
+
+<th>
+Created Date
+</th>
+
+<th>
+Status
+</th>
+
+<th>
+Action
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+{
+
+filteredReports.map((report)=>(
+
+
+<tr key={report.id}>
+
+
+<td>
+
+
+<div className="report-name">
+
+<FileText size={18}/>
+
+{report.name}
+
+</div>
+
+
+</td>
+
+
+<td>
+{report.type}
+</td>
+
+
+<td>
+{report.date}
+</td>
+
+
+
+<td>
+
+<span className="status">
+
+{report.status}
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<button
+
+className="download-btn"
+
+onClick={()=>downloadReport(report.name)}
+
+>
+
+<Download size={16}/>
+
+Download
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+))
+
+
+}
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div>
+
+
+)
+
+}
+
 
 export default Reports;
